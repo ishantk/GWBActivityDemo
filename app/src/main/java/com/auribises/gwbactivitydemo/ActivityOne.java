@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class ActivityOne extends AppCompatActivity {
 
     // Declare Reference Variable
-    EditText eTxtName;
+    EditText eTxtName,eTxtPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class ActivityOne extends AppCompatActivity {
         setContentView(R.layout.activity_one);
 
         eTxtName = (EditText) findViewById(R.id.editTextName);
+        eTxtPhone = (EditText) findViewById(R.id.editTextPhone);
 
         //System.out.println("ActivityOne - onCreate");
         Log.i("ActivityOne","--onCreate--");
@@ -76,13 +77,47 @@ public class ActivityOne extends AppCompatActivity {
     public void clickHandler(View view){
 
         String name = eTxtName.getText().toString().trim();
+        String phone = eTxtPhone.getText().toString().trim();
+
+        // 1. Forward Pass - Direct
+//        Intent intent = new Intent(ActivityOne.this,ActivityTwo.class);
+//        intent.putExtra("keyName",name);
+//        intent.putExtra("keyPhone",phone);
+//        intent.putExtra("keyAge",20);
+//        startActivity(intent);
+
+        // 2. Forward Pass - Bundle
+        /*Intent intent = new Intent(ActivityOne.this,ActivityTwo.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("keyName",name);
+        bundle.putString("keyPhone",phone);
+        bundle.putInt("keyAge",25);
+
+        intent.putExtra("keyBundle",bundle);
+
+
+        startActivity(intent);*/
+
+        // 3. Forward Pass - Serializable
+//        Intent intent = new Intent(ActivityOne.this,ActivityTwo.class);
+//        Person person = new Person(name,phone,30);
+//        intent.putExtra("keyPerson",person);
+//        startActivity(intent);
+
+
+        // Backward Passing
+        Intent intent = new Intent(ActivityOne.this,ActivityThree.class);
+        startActivityForResult(intent,101); // 101 is a requestCode (Any number of your choice)
+
+        /*String name = eTxtName.getText().toString().trim();
 
         int num = Integer.parseInt(name);
 
         StringBuffer buffer = new StringBuffer();
         for(int i=0;i<=10;i++){
             buffer.append(num+" "+i+"'s are "+(num*i)+"\n");
-        }
+        }*/
 
 
         //Toast.makeText(this,"You Clicked Button: "+name,Toast.LENGTH_LONG).show();
@@ -96,7 +131,19 @@ public class ActivityOne extends AppCompatActivity {
         //startActivity(intent);
 
         // IMPLICIT INTENT
-        Intent intent = new Intent("com.auribises.gwbactivitydemo.activitytwo");
-        startActivity(intent);
+        //Intent intent = new Intent("com.auribises.gwbactivitydemo.activitytwo");
+        //startActivity(intent);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 101 && resultCode == 201){
+            String name = data.getStringExtra("keyName");
+            String phone = data.getStringExtra("keyPhone");
+
+            eTxtName.setText(name);
+            eTxtPhone.setText(phone); // if you are setting data on view. Make sure it is String
+        }
     }
 }
