@@ -5,8 +5,8 @@
     <item android:id="@+id/allsongs"
           android:title="All Songs"/>
 
-    <item android:id="@+id/fav"
-        android:title="Favourites"/>
+    <item android:id="@+id/views"
+        android:title="ViewsActivity"/>
 
     <item android:id="@+id/lib"
         android:title="Library"

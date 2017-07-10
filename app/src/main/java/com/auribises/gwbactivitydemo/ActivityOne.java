@@ -207,8 +207,9 @@ public class ActivityOne extends AppCompatActivity {
                 Toast.makeText(this,"You selected all songs",Toast.LENGTH_LONG).show();
                 break;
 
-            case R.id.lib:
-                Toast.makeText(this,"You selected library",Toast.LENGTH_LONG).show();
+            case R.id.views:
+                Intent intent = new Intent(ActivityOne.this,ViewsActivity.class);
+                startActivity(intent);
                 break;
         }
 
