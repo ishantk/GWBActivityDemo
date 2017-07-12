@@ -1,6 +1,8 @@
 package com.auribises.gwbactivitydemo;
 
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +25,9 @@ public class ActivityOne extends AppCompatActivity {
 
         eTxtName = (EditText) findViewById(R.id.editTextName);
         eTxtPhone = (EditText) findViewById(R.id.editTextPhone);
+
+        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(101);
 
         //System.out.println("ActivityOne - onCreate");
         Log.i("ActivityOne","--onCreate--");
