@@ -3,11 +3,11 @@
     package="com.auribises.gwbactivitydemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -27,12 +27,29 @@
         <activity android:name=".ActivityThree" />
         <activity android:name=".ViewsActivity" />
         <activity android:name=".CardActivity" />
-        <activity android:name=".MyListActivity"></activity>
+        <activity android:name=".MyListActivity" />
         <activity android:name=".NewsActivity" />
-        <activity android:name=".CustomListActivity">
+        <activity android:name=".CustomListActivity" />
+        <activity android:name=".MyLocationActivity" />
+        <activity android:name=".MySesnorActivity">
 
         </activity>
-        <activity android:name=".MyLocationActivity">
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="a.b.c.d" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".MyFragmentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
